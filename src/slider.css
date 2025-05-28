@@ -7,8 +7,8 @@
     left: 100%;
     overflow: hidden;
     transition: opacity 0.2s ease-in-out;
-    padding-left: 3em;
-    padding-right: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
     color: white;
 }
 .card-slider{

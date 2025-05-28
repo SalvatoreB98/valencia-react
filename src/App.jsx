@@ -1,17 +1,20 @@
+import { useEffect } from "react";
 import "./App.css";
-import { Slider } from './slider.js'
+import { Slider } from "./slider.js";
+import data from "./assets/data.json";
+import Countdown from "./components/countdown.jsx";
 function App() {
-  new Slider('slider', document.querySelector('.card-slider'));
-
+  const today = new Date().toISOString().split("T")[0]; // "2025-06-02"
+  useEffect(() => {
+    new Slider("slider", document.querySelector(".card-slider"));
+    console.log("Slider initialized");
+    console.log("Data loaded:", data);
+  }, []);
   return (
     <>
       <main className="timeline">
         <header>
-          <div className="overlay"></div>
-          <div className="desc">
-            <h1>Valencia Experience</h1>
-            <p>4 giorni di cultura, divertimento e relax</p>
-          </div>
+          <Countdown targetDate="2025-06-01T00:00:00" />
         </header>
 
         <div className="slider-container">
@@ -22,63 +25,43 @@ function App() {
               </div>
             </div>
             <div className="card-slider">
-              <div className="card day-card" day="1">
-                <h2>
-                  Giorno 1 <span>01/06/2025</span>
-                </h2>
-                <ul>
-                  <li>🍝 Pranzo in Allegria (proposta)</li>
-                  <li>✈️ Aeroporto SUF - 18:00</li>
-                  <li>🍹 Aperitivo Pre-Partenza</li>
-                  <li>🚐 Arrivo a Valencia - 21:30</li>
-                  <li>🏡 Check-in appartamento</li>
-                  <li>🌆 Serata tra i vicoli con Paella & compagnia</li>
-                  <li>💃 Ballar!</li>
-                </ul>
-              </div>
-
-              <div className="card day-card" day="2">
-                <h2>
-                  Giorno 2 <span>02/06/2025</span>
-                </h2>
-                <ul>
-                  <li>😴 Sveglia nel chill</li>
-                  <li>☕ Colazione in pasticceria</li>
-                  <li>🚴‍♂️ E-bike e Oceanografico</li>
-                  <li>🥙 Pranzo</li>
-                  <li>🏙️ Giretto in centro</li>
-                  <li>🚿 Ritorno a casetta</li>
-                  <li>🥩 Cena</li>
-                  <li>🕺 Disco: Akuarela / Marina Beach Club</li>
-                </ul>
-              </div>
-
-              <div className="card day-card" day="3">
-                <h2>
-                  Giorno 3 <span>03/06/2025</span>
-                </h2>
-                <ul>
-                  <li>🥐 Colazione in pasticceria</li>
-                  <li>🏛️ Mercato, Cattedrale, Parc Gulliver</li>
-                  <li>🌮 Tapas al mercato</li>
-                  <li>🏖️ Giretto in spiaggia</li>
-                  <li>🚿 Ritorno a casetta</li>
-                  <li>🍲 Cena</li>
-                  <li>🍾 Serata finale in centro</li>
-                </ul>
-              </div>
-
-              <div className="card day-card" day="4">
-                <h2>
-                  Giorno 4 <span>04/06/2025</span>
-                </h2>
-                <ul>
-                  <li>🕶️ Occhiali da sole anti-vergogna</li>
-                  <li>☕ Colazione</li>
-                  <li>✈️ Ritorno all’Aeroporto SUF</li>
-                  <li>👋 Saluti!</li>
-                </ul>
-              </div>
+              {data.days.map((dayObj) => (
+                <div
+                  key={dayObj.day}
+                  className={`card day-card ${dayObj.date === today ? 'highlight' : ''}`}
+                  day={dayObj.day}
+                >
+                  <h2>
+                    Giorno {dayObj.day}{" "}
+                    <span>
+                      {new Date(dayObj.date).toLocaleDateString("it-IT")}
+                    </span>
+                  </h2>
+                  <ul>
+                    {Object.entries(dayObj.schedule).map(
+                      ([periodo, eventi]) => (
+                        <div key={periodo}>
+                          {eventi.map((item, index) => (
+                            <li key={index}>
+                              {typeof item === "string" ? (
+                                item
+                              ) : (
+                                <a
+                                  href={item.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  {item.event}
+                                </a>
+                              )}
+                            </li>
+                          ))}
+                        </div>
+                      )
+                    )}
+                  </ul>
+                </div>
+              ))}
             </div>
             <div className="arrow-container arrow-right">
               <div className="arrow">
@@ -89,8 +72,19 @@ function App() {
         </div>
 
         <section className="todo p-3">
-          <h2>Prossima cosa da fare</h2>
+          <h2 className="text-center">Prossima cosa da fare</h2>
         </section>
+
+        <div className="bottom-bar">
+          <a href={data.hotel} className="link-box" target="_blank">
+            <i className="fa fa-home fa-2x"></i>
+            <span>Hotel </span>
+          </a>
+          <a href={data.aereoporto} className="link-box" target="_blank">
+            <i className="fa fa-plane fa-2x"></i>
+            <span> Aereo </span>
+          </a>
+        </div>
       </main>
     </>
   );

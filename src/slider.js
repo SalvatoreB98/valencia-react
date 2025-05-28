@@ -30,7 +30,7 @@ export class Slider {
         return Slider.instance || new Slider();
     }
     updateUI() {
-        
+
         this.updateSliderPosition();
         this.updateArrowState();
     }
@@ -61,12 +61,21 @@ export class Slider {
         );
 
         this.cardSlider.addEventListener("touchmove", (e) => {
-            e.preventDefault();
             if (!moving) return;
+
             const currentX = e.touches[0].pageX;
-            const translateX = this.newPosition + currentX - startX;
-            this.cardSlider.style.transform = `translateX(${translateX}px)`;
-        });
+            const currentY = e.touches[0].pageY;
+            const deltaX = currentX - startX;
+            const deltaY = Math.abs(currentY - e.touches[0].pageY);
+
+            // Blocca scroll verticale se il movimento è orizzontale prevalente
+            if (Math.abs(deltaX) > deltaY) {
+                e.preventDefault();
+                const translateX = this.newPosition + deltaX;
+                this.cardSlider.style.transform = `translateX(${translateX}px)`;
+            }
+        }, { passive: false });
+
 
         this.cardSlider.addEventListener("touchend", (e) => {
             moving = false;

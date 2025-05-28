@@ -1,0 +1,24 @@
+:root {
+    --primary-color: #463464;
+    --secondary-color: #ce6b8a;
+    --third-color: #eebbc4;
+    --fourth-color: #efd9e3;
+    --fifth-color: #c4bbda;
+    --background-color: #463464;
+  }
+  
+.countdown {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.countdown .block {
+    background-color: #46346436;
+    margin: 0.5em;
+    border-radius: 5px;
+    padding: 0.5em;
+    width: 70px;
+}
+.time {
+    font-size: 0.5em;
+    font-weight: normal;
+}
