@@ -14,9 +14,15 @@
 .card-slider{
     display: flex;
     cursor: grab;
+    margin: auto;
 }
 .card {
     min-width: 90%;
+    font-size: 0.8em;
+}
+.card h3 {
+    font-size: 1em;
+    font-weight: bold;
 }
 .arrow {
     padding: 1em;
@@ -47,4 +53,15 @@
 
 .arrow-right {
     right: 5px;
+}
+
+@media screen and (min-width: 768px) {
+    .card {
+        min-width: auto;
+        max-width: 500px;
+    }
+    .card-slider {
+        justify-content: center;
+        margin: auto;
+    }
 }

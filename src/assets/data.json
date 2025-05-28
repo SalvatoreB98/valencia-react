@@ -3,13 +3,14 @@
     "description": "4 giorni di cultura, divertimento e relax",
     "hotel": "https://www.google.com/maps/dir/?api=1&destination=C%2F+del+Convent+de+Sant+Francesc%2C+3%2C+Ciutat+Vella%2C+46002+València%2C+Valencia%2C+Spagna&travelmode=walking",
     "aereoporto": "https://maps.app.goo.gl/i9knMJSxdXKnLSFn9?g_st=com.google.maps.preview.copy",
+    "checkin": "https://www.ryanair.com/ie/en/check-in",
     "days": [
       {
         "day": 1,
         "date": "2025-06-01",
         "schedule": {
           "mattina": [
-            "🍝 Pranzo in Allegria (proposta)"
+            "Libera"
           ],
           "pomeriggio": [
             {

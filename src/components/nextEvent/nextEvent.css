@@ -1,0 +1,45 @@
+.next-event {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+    margin: auto;
+
+}
+
+.next-event .tra {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
+    font-size: 1.2em;
+}
+
+.container-count2 {
+    position: relative;
+    letter-spacing: 5px;
+    display: grid;
+    align-items: center;
+}
+
+.container-count2 .unit {
+    font-size: 0.5em;
+    position: relative;
+    bottom: 5px;
+}
+
+.next-event .desc {
+    top: -1em;
+    right: -1.5em;
+    font-size: 0.75em;
+    position: absolute;
+}
+
+.next-thing {
+    padding: 0.8em;
+    border-radius: 10px;
+    flex-grow: 1;
+    margin-right: 20px;
+}
