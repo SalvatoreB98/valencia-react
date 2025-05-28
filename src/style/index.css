@@ -14,7 +14,7 @@ body {
 a {
   color: var(--primary-color);
   font-weight: bold;
-  
+
 }
 
 header {
@@ -100,6 +100,7 @@ header .desc{
 a.link-box {
   text-decoration: none;
   color: white;
+  font-weight: 400;
 }
 .link-box {
   display: flex;
@@ -148,4 +149,12 @@ a.link-box {
 
 .card .periodo {
   min-height: 50px;
+}
+
+.card h2 {
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--primary-color);
+}
+.card ul {
+  list-style: none;
 }

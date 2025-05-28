@@ -3,13 +3,18 @@ import { Slider } from "./external/slider.js";
 import data from "./assets/data.json";
 import Countdown from "./components/countdown/countdown.jsx";
 import NextEvent from "./components/nextEvent/nextEvent.jsx";
+import { useState } from "react";
+import Extra from "./components/Extra/Extra.jsx";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+  const [showModalExtra, setShowModalExtra] = useState(false);
+
   const today = new Date().toISOString().split("T")[0]; // "2025-06-02"
   const icone = {
-    mattina: <i class="fa fa-coffee" aria-hidden="true"></i>,
-    pomeriggio: <i class="fa fa-sun-o" aria-hidden="true"></i>,
-    sera: <i class="fa fa-moon-o" aria-hidden="true"></i>,
+    mattina: <i className="fa fa-coffee" aria-hidden="true"></i>,
+    pomeriggio: <i className="fa fa-sun-o" aria-hidden="true"></i>,
+    sera: <i className="fa fa-moon-o" aria-hidden="true"></i>,
   };
   useEffect(() => {
     new Slider("slider", document.querySelector(".card-slider"));
@@ -47,7 +52,7 @@ function App() {
                   </h2>
 
                   {["mattina", "pomeriggio", "sera"].map((periodo) => (
-                    <section class={'periodo ' + periodo}>
+                    <section className={"periodo " + periodo} key={periodo}>
                       <h3>
                         {icone[periodo]}{" "}
                         {periodo.charAt(0).toUpperCase() + periodo.slice(1)}
@@ -92,14 +97,55 @@ function App() {
           </a>
           <a href={data.aereoporto} className="link-box" target="_blank">
             <i className="fa fa-plane fa-2x"></i>
-            <span> Aereo </span>
+            <span> VAL </span>
           </a>
-          <a href={data.checkin} className="link-box" target="_blank">
-            <i class="fa fa-address-card-o fa-2x" aria-hidden="true"></i>
-            <span style={{ whiteSpace: "nowrap" }}> Check-in </span>
+
+          <a
+            className="link-box"
+            target="_blank"
+            onClick={() => setShowModalExtra(true)}
+          >
+            <i className="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+            <span style={{ whiteSpace: "nowrap" }}> Tappe Extra </span>
+          </a>
+          <a
+            className="link-box"
+            target="_blank"
+            onClick={() => setShowModal(true)}
+          >
+            <i className="fa fa-life-ring fa-2x" aria-hidden="true"></i>
+            <span style={{ whiteSpace: "nowrap" }}> Contatti </span>
           </a>
         </div>
       </main>
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>📇 Contatti utili</h3>
+            <ul>
+              <li>
+                📞 Hotel: <a href="tel:+34696120663"> 696 12 06 63</a>
+              </li>
+              <li>
+                {" "}
+                <a href={data.hotel} target="_blank">
+                  📍 Calle del Convent de Sant Francesc
+                </a>{" "}
+              </li>
+              <li>
+                🆘 (NUE) <a href="tel:112">112</a>{" "}
+              </li>
+            </ul>
+            <button
+              className="close-button"
+              onClick={() => setShowModal(false)}
+            >
+              <i className="fa fa-times-circle" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      )}
+      {showModalExtra && <Extra setShowModalExtra={setShowModalExtra}></Extra>}
     </>
   );
 }

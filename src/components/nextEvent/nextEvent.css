@@ -43,3 +43,6 @@
     flex-grow: 1;
     margin-right: 20px;
 }
+.next-thing a {
+    color: var(--fourth-color);
+}
