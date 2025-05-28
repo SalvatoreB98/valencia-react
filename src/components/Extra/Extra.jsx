@@ -61,7 +61,7 @@ export default function Extra({ setShowModalExtra }) {
                 />
                 <div className="card-body py-2">
                   <h5 className="card-title mb-1">
-                    🍷 ALENAR Bodega Mediterránea
+                    🍷 ALENAR 
                   </h5>
                   <p className="card-text small mb-1">
                     Tapas fresche e vini locali

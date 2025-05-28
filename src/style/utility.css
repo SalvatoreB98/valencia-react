@@ -50,3 +50,10 @@
     justify-content: flex-end;
     transform: translate(1em, -1em);
 }
+.card {
+    border: none!important;
+}
+.img-fluid {
+    min-width: 100px;
+    height: auto;
+}
