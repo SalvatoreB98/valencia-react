@@ -16,9 +16,9 @@ export default function NextEvent({ schedule }) {
         <div className="container-count2">
           <div className="desc">🕒</div>
           <div>{ore}</div>
-          <div className="unit">ore</div>
+          <div className="unit">h</div>
           <div>{minuti}</div>
-          <div className="unit">min</div>
+          <div className="unit">m</div>
         </div>
       );
     if (ore > 0)
@@ -26,14 +26,14 @@ export default function NextEvent({ schedule }) {
         <div className="container-count2">
           <div className="desc">🕒</div>
           <div>{ore}</div>
-          <div className="unit">ore</div>
+          <div className="unit">h</div>
         </div>
       );
     return (
       <div className="container-count2">
         <div className="desc">🕒</div>
         <div>{minuti}</div>
-        <div className="unit">min</div>
+        <div className="unit">m</div>
       </div>
     );
   };
