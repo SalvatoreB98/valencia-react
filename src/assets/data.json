@@ -9,7 +9,9 @@
       "day": 1,
       "date": "2025-06-01",
       "schedule": {
-        "mattina": [],
+        "mattina": [
+          "Fare check-in online"
+        ],
         "pomeriggio": [
           {
             "event": "✈️ Aeroporto SUF - 18:00",
