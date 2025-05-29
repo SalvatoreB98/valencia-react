@@ -8,7 +8,7 @@ export default function NextEvent({ schedule }) {
   const [showModal, setShowModal] = useState(false);
 
   const tempoRimanente = (futuraData) => {
-    const diff = futuraData - new Date("2025-06-01T20:09:00Z");
+    const diff = futuraData - new Date();
     if (diff <= 0) return "⏳ Ora!";
 
     const minutiTotali = Math.floor(diff / 60000);
@@ -43,7 +43,7 @@ export default function NextEvent({ schedule }) {
   };
 
   useEffect(() => {
-    const now = new Date("2025-06-01T20:09:00Z"); // oppure: new Date("2025-06-01T20:09:00Z")
+    const now = new Date(); // oppure: new Date()
     const bufferMs = 20 * 60 * 1000; // 20 minuti
 
     const flatEvents = [];
