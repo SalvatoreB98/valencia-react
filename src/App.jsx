@@ -66,7 +66,7 @@ function App() {
                             ) : (
                               <a
                                 href={item.link}
-                                target="_blank"
+                                target="_self"
                                 rel="noopener noreferrer"
                               >
                                 {item.event}
@@ -91,18 +91,18 @@ function App() {
         <NextEvent schedule={data} />
 
         <div className="bottom-bar">
-          <a href={data.hotel} className="link-box" target="_blank">
+          <a href={data.hotel} className="link-box" target="_self">
             <i className="fa fa-home fa-2x"></i>
             <span>Hotel </span>
           </a>
-          <a href={data.aereoporto} className="link-box" target="_blank">
+          <a href={data.aereoporto} className="link-box" target="_self">
             <i className="fa fa-plane fa-2x"></i>
             <span> VAL </span>
           </a>
 
           <a
             className="link-box"
-            target="_blank"
+            target="_self"
             onClick={() => setShowModalExtra(true)}
           >
             <i className="fa fa-map-marker fa-2x" aria-hidden="true"></i>
@@ -110,7 +110,7 @@ function App() {
           </a>
           <a
             className="link-box"
-            target="_blank"
+            target="_self"
             onClick={() => setShowModal(true)}
           >
             <i className="fa fa-life-ring fa-2x" aria-hidden="true"></i>
@@ -118,8 +118,13 @@ function App() {
           </a>
           <a
             className="link-box"
-            target="_blank"
-            href="https://translate.google.com/?sl=it&tl=es&op=translate"
+            href={
+              /Android/i.test(navigator.userAgent)
+                ? "intent://translate/#Intent;package=com.google.android.apps.translate;scheme=https;end"
+                : "https://translate.google.com/?sl=auto&tl=es&op=translate"
+            }
+            target="_self"
+            rel="noopener noreferrer"
           >
             <i className="fa fa-language fa-2x" aria-hidden="true"></i>
             <span style={{ whiteSpace: "nowrap" }}> Traduttore </span>
@@ -136,7 +141,7 @@ function App() {
               </li>
               <li>
                 {" "}
-                <a href={data.hotel} target="_blank">
+                <a href={data.hotel} target="_self">
                   📍 Calle del Convent de Sant Francesc
                 </a>{" "}
               </li>
