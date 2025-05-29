@@ -10,23 +10,47 @@
       "date": "2025-06-01",
       "schedule": {
         "mattina": [
-          "Fare check-in online"
+          {
+            "event": "Fare check-in online",
+            "time": "09:00",
+            "duration": 15
+          }
         ],
         "pomeriggio": [
           {
             "event": "✈️ Aeroporto SUF - 18:00",
+            "time": "16:00",
+            "duration": 120,
             "link": "https://www.lameziaairport.it/"
           },
-          "🍹 Aperitivo Pre-Partenza"
+          {
+            "event": "🍹 Aperitivo Pre-Partenza",
+            "time": "18:00",
+            "duration": 60
+          }
         ],
         "sera": [
           {
-            "event": "🚐 Arrivo a Valencia - 21:30",
+            "event": "🚐 Arrivo a Valencia in navetta - 21:30",
+            "time": "21:30",
+            "duration": 15,
             "link": "https://www.aena.es/en/valencia.html"
           },
-          "🏡 Check-in appartamento",
-          "🌆 Serata tra i vicoli con Paella",
-          "💃 Ballar!"
+          {
+            "event": "🏡 Check-in appartamento",
+            "time": "21:45",
+            "duration": 30
+          },
+          {
+            "event": "🌆 Serata tra i vicoli con Paella",
+            "time": "22:30",
+            "duration": 90
+          },
+          {
+            "event": "💃 Ballar!",
+            "time": "00:00",
+            "duration": 120
+          }
         ]
       }
     },
@@ -35,28 +59,52 @@
       "date": "2025-06-02",
       "schedule": {
         "mattina": [
-          "😴 Sveglia nel chill",
+          {
+            "event": "😴 Sveglia nel chill",
+            "time": "09:00",
+            "duration": 30
+          },
           {
             "event": "☕ Colazione in pasticceria",
+            "time": "09:30",
+            "duration": 45,
             "link": ""
           },
           {
             "event": "🚴‍♂️ E-bike e Oceanografico",
+            "time": "10:30",
+            "duration": 150,
             "link": "https://www.oceanografic.org/contacto/"
           }
         ],
         "pomeriggio": [
-          "🥙 Pranzo",
+          {
+            "event": "🥙 Pranzo",
+            "time": "13:30",
+            "duration": 90
+          },
           {
             "event": "🏙️ Giretto in centro",
+            "time": "15:30",
+            "duration": 120,
             "link": "https://www.google.com/maps/place/Ciutat+Vella,+Valencia"
           }
         ],
         "sera": [
-          "🚿 Ritorno a casetta",
-          "🥩 Cena",
+          {
+            "event": "🚿 Ritorno a casetta",
+            "time": "18:00",
+            "duration": 30
+          },
+          {
+            "event": "🥩 Cena",
+            "time": "20:00",
+            "duration": 90
+          },
           {
             "event": "🕺 Disco: Akuarela / Marina Beach Club",
+            "time": "22:30",
+            "duration": 180,
             "link": "https://marinabeachclub.com/"
           }
         ]
@@ -69,28 +117,46 @@
         "mattina": [
           {
             "event": "🥐 Colazione in pasticceria",
+            "time": "09:00",
+            "duration": 45,
             "link": ""
           },
           {
             "event": "🏛️ Mercato, Cattedrale, Parc Gulliver",
+            "time": "10:00",
+            "duration": 180,
             "link": "https://www.google.com/maps/d/u/0/viewer?mid=1Rvgc6nIkgosMKXEr0U7KCrbgCmk&hl=en"
           }
         ],
         "pomeriggio": [
           {
             "event": "🌮 Tapas al mercato",
+            "time": "13:30",
+            "duration": 90,
             "link": "https://www.mercadocentralvalencia.es/"
           },
           {
             "event": "🏖️ Giretto in spiaggia",
+            "time": "15:30",
+            "duration": 120,
             "link": "https://www.google.com/maps/place/Playa+de+la+Malvarrosa/"
           }
         ],
         "sera": [
-          "🚿 Ritorno a casetta",
-          "🍲 Cena",
+          {
+            "event": "🚿 Ritorno a casetta",
+            "time": "18:00",
+            "duration": 30
+          },
+          {
+            "event": "🍲 Cena",
+            "time": "20:00",
+            "duration": 90
+          },
           {
             "event": "🍾 Serata finale in centro",
+            "time": "22:00",
+            "duration": 120,
             "link": "https://www.google.com/maps/place/Ciutat+Vella,+Valencia"
           }
         ]
@@ -101,16 +167,40 @@
       "date": "2025-06-04",
       "schedule": {
         "mattina": [
-          "🕶️ Occhiali da sole anti-vergogna",
-          "☕ Colazione",
-          "✈️ Ritorno all’Aeroporto SUF",
-          "👋 Saluti!"
+          {
+            "event": "🕶️ Occhiali da sole anti-vergogna",
+            "time": "09:00",
+            "duration": 5
+          },
+          {
+            "event": "☕ Colazione",
+            "time": "09:15",
+            "duration": 45
+          },
+          {
+            "event": "✈️ Ritorno all’Aeroporto SUF",
+            "time": "10:30",
+            "duration": 120
+          },
+          {
+            "event": "👋 Saluti!",
+            "time": "12:45",
+            "duration": 15
+          }
         ],
         "pomeriggio": [
-          "🛌 Riposo"
+          {
+            "event": "🛌 Riposo",
+            "time": "15:00",
+            "duration": 120
+          }
         ],
         "sera": [
-          "🛌 Riposo"
+          {
+            "event": "🛌 Riposo",
+            "time": "21:00",
+            "duration": 480
+          }
         ]
       }
     }

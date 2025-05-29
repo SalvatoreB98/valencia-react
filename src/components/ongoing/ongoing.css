@@ -1,0 +1,21 @@
+.ongoing {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 700px;
+    margin: auto;
+
+}
+
+
+
+.ongoing{
+    padding: 0.8em;
+    border-radius: 10px;
+}
+
+.ongoing a {
+    color: var(--fourth-color);
+}

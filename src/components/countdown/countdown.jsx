@@ -6,7 +6,7 @@ export default function Countdown({ targetDate }) {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
   function getTimeLeft() {
-    const now = new Date();
+    const now = new Date("2025-06-01T20:09:00Z");
     const target = new Date(targetDate);
     const diff = target - now;
 

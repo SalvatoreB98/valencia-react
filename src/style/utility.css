@@ -50,10 +50,13 @@
     justify-content: flex-end;
     transform: translate(1em, -1em);
 }
-.card {
+.modal-content .card {
     border: none!important;
 }
 .img-fluid {
     min-width: 100px;
     height: auto;
+}
+.highlight {
+    border: 5px solid white ;
 }

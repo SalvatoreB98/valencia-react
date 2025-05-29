@@ -10,7 +10,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [showModalExtra, setShowModalExtra] = useState(false);
 
-  const today = new Date().toISOString().split("T")[0]; // "2025-06-02"
+  const today = new Date("2025-06-01T20:09:00Z").toISOString().split("T")[0]; // "2025-06-02"
   const icone = {
     mattina: <i className="fa fa-coffee" aria-hidden="true"></i>,
     pomeriggio: <i className="fa fa-sun-o" aria-hidden="true"></i>,
