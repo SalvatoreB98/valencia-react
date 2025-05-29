@@ -48,42 +48,43 @@ export class Slider {
     }
 
     touchInit() {
-        let startX, moving = false;
+        let startX = 0;
+        let dragging = false;
+        this.frameRequested = false;
+        
+        this.cardSlider.addEventListener("pointerdown", (e) => {
+            if (e.pointerType !== "touch") return; // solo touch (opzionale)
+            startX = e.clientX;
+            dragging = true;
+            this.cardSlider.setPointerCapture(e.pointerId);
+            this.cardSlider.style.transition = "none";
+        });
 
-        this.cardSlider.addEventListener(
-            "touchstart",
-            (e) => {
-                startX = e.touches[0].pageX;
-                moving = true;
-                this.cardSlider.style.transition = "";
-            },
-            { passive: true }
-        );
+        this.cardSlider.addEventListener("pointermove", (e) => {
+            if (!dragging) return;
+            const deltaX = e.clientX - startX;
 
-        this.cardSlider.addEventListener("touchmove", (e) => {
-            if (!moving) return;
+            this.currentDeltaX = deltaX;
+            this.cardSlider.style.transform = `translateX(${this.newPosition + deltaX}px)`;
+        });
 
-            const currentX = e.touches[0].pageX;
-            const currentY = e.touches[0].pageY;
-            const deltaX = currentX - startX;
-            const deltaY = Math.abs(currentY - e.touches[0].pageY);
+        this.cardSlider.addEventListener("pointerup", (e) => {
+            if (!dragging) return;
+            dragging = false;
+            this.cardSlider.releasePointerCapture(e.pointerId);
+            const deltaX = this.currentDeltaX || 0;
+            this.currentDeltaX = 0;
 
-            // Blocca scroll verticale se il movimento è orizzontale prevalente
-            if (Math.abs(deltaX) > deltaY) {
-                e.preventDefault();
-                const translateX = this.newPosition + deltaX;
-                this.cardSlider.style.transform = `translateX(${translateX}px)`;
+            this.cardSlider.style.transition = "transform 0.3s ease-out";
+
+            if (Math.abs(deltaX) > 15) {
+                this.handleSwipe(deltaX);
+            } else {
+                this.cardSlider.style.transform = `translateX(${this.newPosition}px)`;
             }
-        }, { passive: false });
-
-
-        this.cardSlider.addEventListener("touchend", (e) => {
-            moving = false;
-            const endX = e.changedTouches[0].pageX;
-            const deltaX = endX - startX;
-            this.handleSwipe(deltaX);
         });
     }
+
 
     desktopGrabInit() {
         const images = this.cardSlider.querySelectorAll("img");
@@ -130,22 +131,15 @@ export class Slider {
     }
 
     handleSwipe(deltaX) {
-        const firstCard = this.cardSlider.children[0];
-        const firstCardStyles = window.getComputedStyle(firstCard);
-        const cardWidth = firstCard.offsetWidth;
-        const cardMargin = parseInt(firstCardStyles.marginLeft, 10) + parseInt(firstCardStyles.marginRight, 10);
-        const cardTotalWidth = cardWidth + cardMargin;
-
-        const scrolledCard = Math.round(Math.abs(deltaX) / cardTotalWidth);
-
-        if (deltaX < 0) {
-            this.index = Math.min(this.index + scrolledCard, this.cards.length - 1);
-        } else if (deltaX > 0) {
-            this.index = Math.max(this.index - scrolledCard, 0);
+        const threshold = 2;
+        if (deltaX < -threshold) {
+            this.index = Math.min(this.index + 1, this.cards.length - 1);
+        } else if (deltaX > threshold) {
+            this.index = Math.max(this.index - 1, 0);
         }
-
         this.updateUI();
     }
+
 
     updateSliderPosition() {
         const cardElement = this.cards[0]; // Assuming all card have the same dimensions

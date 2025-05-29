@@ -3,6 +3,15 @@
     margin-top: 1em;
 }
 
+.card-slider {
+    touch-action: none;
+    will-change: transform;
+    backface-visibility: hidden;
+    /* aiuta su iOS a ridurre jank */
+    transform: translateZ(0);
+    /* forza accelerazione hardware */
+}
+
 #slider {
     left: 100%;
     overflow: hidden;
@@ -11,19 +20,23 @@
     padding-right: 1em;
     color: white;
 }
-.card-slider{
+
+.card-slider {
     display: flex;
     cursor: grab;
     margin: auto;
 }
+
 .card {
     min-width: 90%;
     font-size: 0.8em;
 }
+
 .card h3 {
     font-size: 1em;
     font-weight: bold;
 }
+
 .arrow {
     padding: 1em;
     width: 50px;
@@ -60,6 +73,7 @@
         min-width: auto;
         max-width: 500px;
     }
+
     .card-slider {
         justify-content: center;
         margin: auto;
