@@ -116,6 +116,14 @@ function App() {
             <i className="fa fa-life-ring fa-2x" aria-hidden="true"></i>
             <span style={{ whiteSpace: "nowrap" }}> Contatti </span>
           </a>
+          <a
+            className="link-box"
+            target="_blank"
+            href="https://translate.google.com/?sl=it&tl=es&op=translate"
+          >
+            <i className="fa fa-language fa-2x" aria-hidden="true"></i>
+            <span style={{ whiteSpace: "nowrap" }}> Traduttore </span>
+          </a>
         </div>
       </main>
       {showModal && (
